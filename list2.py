@@ -18,17 +18,40 @@
 
 
 def remove_adjacent(nums):
-    """Your code goes here.  Edit this docstring."""
-    return
+    if len(nums) == 0:
+        return []
+    reduced_nums = []
+    for num in range(len(nums)-1):
+        if nums[num] != nums[num+1]:
+            reduced_nums.append(nums[num])
+
+    reduced_nums.append(nums[-1])
+    return reduced_nums
 
 
 # E. Given two lists sorted in increasing order, create and return a merged
 # list of all the elements in sorted order. You may modify the passed in lists.
 # The solution should work in "linear" time, making a single pass of both lists.
 # Hint: Don't use `sort` or `sorted` -- they are not linear time.
+
+# https://www.geeksforgeeks.org/python-combining-two-sorted-lists/
+# Tried to do it with a for in loop and was having a disastorous time
+# I was also trying to do it without the splicing at the end for some reason and it was crap.
 def linear_merge(list1, list2):
-    """Your code goes here.  Edit this docstring."""
-    return
+    sorted_array = []
+
+    x = 0
+    y = 0
+
+    while x < len(list1) and y < len(list2):
+        if list1[x] < list2[y]:
+            sorted_array.append(list1[x])
+            x += 1
+        else:
+            sorted_array.append(list2[y])
+            y += 1
+    sorted_array = sorted_array + list1[x:] + list2[y:]
+    return sorted_array
 
 
 # Simple provided test() function used in main() to print
